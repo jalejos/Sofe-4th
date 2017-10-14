@@ -120,12 +120,57 @@ void Board::startDice()
     addChild(diceLabel);
     
     schedule([=](float dt){
-
+        
         actualNumber %= sceneConstructors.size();
         actualNumber++;
         
         string text = "";
         text.push_back(actualNumber+'0');
+        //        log("integer is %d", actualNumber);
+        switch (actualNumber) {
+            case 1:{
+                auto dice1 = Sprite::create("res/dice1.png");
+                dice1->setPosition(Vec2(screenSize/3.f * 2.f));
+                this->addChild(dice1);
+                break;
+            }
+            case 2:{
+                auto dice2 = Sprite::create("res/dice2.png");
+                dice2->setPosition(Vec2(screenSize/3.f * 2.f));
+                this->addChild(dice2);
+                break;
+            }
+            case 3:{
+                auto dice3 = Sprite::create("res/dice3.png");
+                dice3->setPosition(Vec2(screenSize/3.f * 2.f));
+                this->addChild(dice3);
+                break;
+            }
+            case 4:{
+                auto dice4 = Sprite::create("res/dice4.png");
+                dice4->setPosition(Vec2(screenSize/3.f * 2.f));
+                this->addChild(dice4);
+                break;
+            }
+            case 5:{
+                auto dice5 = Sprite::create("res/dice5.png");
+                dice5->setPosition(Vec2(screenSize/3.f * 2.f));
+                this->addChild(dice5);
+                break;
+            }
+            case 6:{
+                auto dice6 = Sprite::create("res/dice6.png");
+                dice6->setPosition(Vec2(screenSize/3.f * 2.f));
+                this->addChild(dice6);
+                break;
+            }
+                
+            default:{
+                log("error");
+                break;
+            }
+        }
+        
         diceLabel->setString(text);
         
     }, 0.1f, -1, 0, "changeDiceNumber");
