@@ -101,11 +101,8 @@ void Board::stopDiceAndMove()
     Vec2 finalPosition = Vec2(screenSize.width / 7 * actualNumber + firstTileSize.width / 2, playerSprite->getPosition().y);
     
     auto jumps = JumpTo::create(actualNumber * 0.6, finalPosition, 60, actualNumber);
-    
-    
     playerSprite->runAction(jumps);
     playerSprite-> setTexture("p_jump.png");
-    
     
     auto callback = CallFunc::create([=](){
         playerSprite->setTexture("p_stand.png");
@@ -116,9 +113,8 @@ void Board::stopDiceAndMove()
     playerSprite->runAction(seq);
     
     
-    
     schedule([=](float dt){
-        Director::getInstance()->pushScene(sceneConstructors[actualNumber-1]());
+        Director::getInstance()->pushScene(sceneConstructors[0]()); //actualNumber-1
     }, actualNumber, 1, 0, "changeScene");
 }
 
