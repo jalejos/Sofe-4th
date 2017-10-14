@@ -57,16 +57,27 @@ void JumpingHippo::initClickListener()
     auto mouseListener = EventListenerTouchOneByOne::create();
     
     mouseListener->onTouchBegan = [=](Touch* touch, Event* event){
-        //reinicia la rotacion del hippo en cada click
-        hippoSprite ->setRotation(0.0f);
+    
+        if(!isJumping){
+          isJumping = true;
+            //reinicia la rotacion del hippo en cada click
+            hippoSprite ->setRotation(0.0f);
+            
+            auto jump = JumpBy::create(0.8, Vec2::ZERO, 150, 1);
+            //rotar 360 grados
+            auto rotateBy = RotateBy::create(0.8f, 360.0f);
+            
+            auto callbackJump = CallFunc::create([=](){
+                log("Jumped!");
+                isJumping = false;
+            });
+            
+            auto mySpawn = Spawn::createWithTwoActions(jump, rotateBy);
+            auto seq = Sequence::create(mySpawn, callbackJump, nullptr);
 
-        auto jump = JumpBy::create(0.8, Vec2::ZERO, 150, 1);
-        //rotar 360 grados
-        auto rotateBy = RotateBy::create(0.8f, 360.0f);
-
-        // running the above Actions with Spawn.
-        auto mySpawn = Spawn::createWithTwoActions(jump, rotateBy);
-        hippoSprite->runAction(mySpawn);
+            hippoSprite->runAction(seq);
+//            return true;
+        }
         return true;
     };
     mouseListener->onTouchMoved = [=](Touch* touch, Event* event){};

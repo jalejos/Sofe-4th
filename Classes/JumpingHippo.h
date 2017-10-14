@@ -23,6 +23,9 @@ public:
     JumpingHippo* context = this;
 
     CREATE_FUNC(JumpingHippo);
+    
+private:
+    bool isJumping = false;
 };
 
 #endif // JumpingHippo
