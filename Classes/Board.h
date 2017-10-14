@@ -39,20 +39,20 @@ public:
     vector<SceneConstructors> sceneConstructors =
     {
         JumpingHippo::createScene,
-        Chips::createScene,
-        Drow::createScene,
+//        Chips::createScene,
+//        Drow::createScene,
         Gluttony::createScene,
-        Stacking::createScene,
-        Counting::createScene
+//        Stacking::createScene,
+//        Counting::createScene
     };
     vector<string> sceneNames =
     {
         "Jumping Hippo",
-        "Chips",
-        "Drow",
+//        "Chips",
+//        "Drow",
         "Gluttony",
-        "Stacking",
-        "Counting"
+//        "Stacking",
+//        "Counting"
     };
     
     void stopDiceAndMove();

@@ -42,7 +42,7 @@ void Board::initTiles()
     firstTilePosition = stoneTile->getPosition();
     
     //6 tiles
-    for(int i = 1; i < 7; i++)
+    for(int i = 1; i < 3; i++)
     {
         Sprite* tile = Sprite::create("grass.png");
         
