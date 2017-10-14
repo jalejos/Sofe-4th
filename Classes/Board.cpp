@@ -102,7 +102,20 @@ void Board::stopDiceAndMove()
     
     auto jumps = JumpTo::create(actualNumber * 0.6, finalPosition, 60, actualNumber);
     
+    
     playerSprite->runAction(jumps);
+    playerSprite-> setTexture("p_jump.png");
+    
+    
+    auto callback = CallFunc::create([=](){
+        playerSprite->setTexture("p_stand.png");
+    });
+    
+    auto seq = Sequence::create(jumps, callback, NULL);
+    
+    playerSprite->runAction(seq);
+    
+    
     
     schedule([=](float dt){
         Director::getInstance()->pushScene(sceneConstructors[actualNumber-1]());
