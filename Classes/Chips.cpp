@@ -23,10 +23,11 @@ bool Chips::init()
 
 void Chips::initComponents()
 {
+	int counter = 10;
     auto screenSize = Director::getInstance()->getVisibleSize();
     
     schedule([=](float dt){
-        
+		
         Sprite* chip = Sprite::create("circle.png");
         float xPosition = random(chip->getContentSize().width / 2, screenSize.width - chip->getContentSize().width / 2);
         float yPosition = random(chip->getContentSize().height / 2, screenSize.height - chip->getContentSize().height / 2);
@@ -40,7 +41,7 @@ void Chips::initComponents()
         chips.push_back(chip);
         context->addChild(chip);
         
-    }, 1.5f, 10, 0, "spawnerCallBack");
+    }, 1.5f, counter, 0, "spawnerCallBack");
     
 }
 
