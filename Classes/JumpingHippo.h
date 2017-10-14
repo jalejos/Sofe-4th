@@ -22,10 +22,20 @@ public:
     
     JumpingHippo* context = this;
 
+    void inicializarFisica(cocos2d::Sprite* sprite);
+    
+    void initScore();
+    
+    int score = 0;
+    
+    Label *scoreLabel = Label::create();
+
+    
     CREATE_FUNC(JumpingHippo);
     
 private:
     bool isJumping = false;
+    
 };
 
 #endif // JumpingHippo
